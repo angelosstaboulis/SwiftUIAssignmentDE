@@ -25,7 +25,7 @@ struct SwiftUIAssignmentDEApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView(searchField: "")
+            ContentView(searchField: "", presented: false)
         }
         .modelContainer(sharedModelContainer)
     }

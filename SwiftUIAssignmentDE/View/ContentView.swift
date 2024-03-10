@@ -20,15 +20,19 @@ struct ContentView: View {
     @State var viewModel = ProductsViewModel()
     @StateObject var checkOnline = Helper()
     @State var searchField:String
+    @State var presented:Bool
     var body: some View {
         NavigationStack{
             HStack{
                 TextField("Search Text", text: $searchField).padding(30)
-                NavigationLink {
-                    PopupView()
-                } label: {
+                Button(action: {
+                    presented.toggle()
+                }, label: {
                     Image("filter")
-                }
+                }).sheet(isPresented: $presented, content: {
+                    PopupView()
+                })
+               
             }
                 Text("Discover New Places")
                 if checkOnline.isOnline{
@@ -91,6 +95,6 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView(searchField:"")
+    ContentView(searchField:"", presented: false)
         .modelContainer(for: DataProduct.self, inMemory: true)
 }

@@ -8,6 +8,7 @@
 import SwiftUI
 import RxSwift
 struct PopupView: View {
+    @Environment(\.dismiss) var dismiss
     @State var menusText = ["American","Turkey","Asia","Fast Food","Pizza","Desserd","Mexican"]
     @State var menus:[String] = []
     @State var viewModel = ProductsViewModel()
@@ -17,14 +18,14 @@ struct PopupView: View {
             HStack{
                 HStack{
                     Button {
-                        
+                        dismiss()
                     } label: {
                         Text("Reset")
                     }
                 }
                 HStack{
                     Button {
-                        
+                        dismiss()
                     } label: {
                         Text("Done")
                     }
